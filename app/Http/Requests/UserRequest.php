@@ -30,6 +30,6 @@ class UserRequest extends FormRequest
                 'name.required' => '用户名不能为空。',
             ];
         }
-    
+
 
 }
