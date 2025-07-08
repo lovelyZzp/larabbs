@@ -41,7 +41,7 @@
                      <input type="file" name="avatar" class="form-control">
                      @if($user->avatar)
                        <br>
-                       <img class="thumbnail img-responsive" src="{{ $user->avatar }}" width="200" />
+                       <img class="thumbnail img-responsive" src="{{ Storage::url($user->avatar) }}" width="200" />
                      @endif
                    </div>
 

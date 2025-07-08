@@ -8,12 +8,13 @@
 
     <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
       <div class="card ">
-        <div class="card ">
-              <img
-                class="card-img-top"
-                src="{{Storage::url($user->avatar) }}"
-                alt="{{ $user->name }}"
-              >
+
+                <img
+                  src="{{ Storage::url($user->avatar) }}"
+                  alt="{{ $user->name }}"
+                  class="img-fluid"
+                  style="width: 100%; max-width: 208px; height: auto; display: block; margin: 0 auto;"
+                >
               <div class="card-body">
                 <h5><strong>个人简介</strong></h5>
                 <p>{{ $user->introduction }}</p>
@@ -22,7 +23,7 @@
 
                 <p>{{ $user->created_at->diffForHumans() }}</p>
               </div>
-      </div>
+
     </div>
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
       <div class="card ">

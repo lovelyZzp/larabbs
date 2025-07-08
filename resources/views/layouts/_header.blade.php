@@ -30,6 +30,7 @@
                                           height="30"
                                           alt="{{ Auth::user()->name }}"
                                       >
+                               {{ Auth::user()->name }}
                              </a>
                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">个人中心</a>
