@@ -14,11 +14,11 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
-	{
-		$topics = Topic::paginate();
-		return view('topics.index', compact('topics'));
-	}
+	 public function index()
+        {
+            $topics = Topic::with('user', 'category')->paginate(30);
+            return view('topics.index', compact('topics'));
+        }
 
     public function show(Topic $topic)
     {
@@ -35,6 +35,8 @@ class TopicsController extends Controller
 		$topic = Topic::create($request->all());
 		return redirect()->route('topics.show', $topic->id)->with('message', 'Created successfully.');
 	}
+
+
 
 	public function edit(Topic $topic)
 	{
