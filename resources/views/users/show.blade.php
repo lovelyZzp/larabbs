@@ -13,7 +13,7 @@
                   src="{{ Storage::url($user->avatar) }}"
                   alt="{{ $user->name }}"
                   class="img-fluid"
-                  style="width: 100%; max-width: 208px; height: auto; display: block; margin: 0 auto;"
+                  style="width: 100%; max-width: 208px; height: 208px; display: block; margin: 0 auto;"
                 >
               <div class="card-body">
                 <h5><strong>个人简介</strong></h5>
