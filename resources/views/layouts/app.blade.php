@@ -14,9 +14,11 @@
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-</head>
+    @yield('styles')
 
-<body>
+  </head>
+
+  <body>
   <div id="app" class="{{ route_class() }}-page">
 
     @include('layouts._header')
@@ -34,6 +36,8 @@
 
   <!-- Scripts -->
   <script src="{{ mix('js/app.js') }}"></script>
-</body>
 
-</html>
+    @yield('scripts')
+
+  </body>
+  </html>
