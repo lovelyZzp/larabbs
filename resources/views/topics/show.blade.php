@@ -17,7 +17,7 @@
           <div class="media">
             <div align="center">
               <a href="{{ route('users.show', $topic->user->id) }}">
-                <img class="thumbnail img-fluid" src="{{ $topic->user->avatar }}" width="300px" height="300px">
+                <img class="thumbnail img-fluid" src="{{ Storage::url($topic->user->avatar) }}" width="300px" height="300px">
               </a>
             </div>
           </div>
@@ -66,11 +66,11 @@
 
       {{-- 用户回复列表 --}}
       <div class="card topic-reply mt-4">
-          <div class="card-body">
-              @include('topics._reply_box', ['topic' => $topic])
-              @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
-          </div>
-      </div>
+                <div class="card-body">
+                    @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
+                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                </div>
+            </div>
 
     </div>
   </div>

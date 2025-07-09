@@ -1,20 +1,22 @@
 <?php
 
-namespace Database\Factories;
+namespace App\Observers;
 
 use App\Models\Reply;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ReplyFactory extends Factory
+// creating, created, updating, updated, saving,
+// saved,  deleting, deleted, restoring, restored
+
+class ReplyObserver
 {
-    protected $model = Reply::class;
-
-    public function definition()
+    public function created(Reply $reply)
     {
-        return [
-            'content' => $this->faker->sentence(),
-            'topic_id' => rand(1, 100),
-            'user_id' => rand(1, 10),
-        ];
+        $reply->topic->reply_count = $reply->topic->replies->count();
+        $reply->topic->save();
     }
+
+    public function creating(Reply $reply)
+        {
+            $reply->content = clean($reply->content, 'user_topic_body');
+        }
 }
