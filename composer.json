@@ -8,12 +8,14 @@
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
+        "laravel/horizon": "~5.9",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "mews/captcha": "~3.0",
         "mews/purifier": "~3.3",
         "overtrue/laravel-lang": "~6.0",
         "overtrue/pinyin": "~4.0",
+        "predis/predis": "~1.1",
         "summerblue/laravel-active": "9.*"
     },
     "require-dev": {
