@@ -3,19 +3,20 @@
 namespace App\Observers;
 
 use App\Models\Reply;
-
-// creating, created, updating, updated, saving,
-// saved,  deleting, deleted, restoring, restored
-
 use App\Notifications\TopicReplied;
 
 class ReplyObserver
 {
     public function created(Reply $reply)
     {
-        $reply->topic->updateReplyCount();
-        // 通知话题作者有新的评论
-        $reply->topic->user->notify(new TopicReplied($reply));
+        if ($reply->topic) {
+            $reply->topic->updateReplyCount();
+
+            // 通知话题作者有新的评论（确保话题作者存在）
+            if ($reply->topic->user) {
+                $reply->topic->user->notify(new TopicReplied($reply));
+            }
+        }
     }
 
     public function creating(Reply $reply)
@@ -25,6 +26,8 @@ class ReplyObserver
 
     public function deleted(Reply $reply)
     {
-        $reply->topic->updateReplyCount();
+        if ($reply->topic) {
+            $reply->topic->updateReplyCount();
+        }
     }
 }
