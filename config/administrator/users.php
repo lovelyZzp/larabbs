@@ -81,7 +81,7 @@ return [
             'type' => 'image',
 
             // 图片上传必须设置图片存放路径
-           'location' => storage_path('app/public/avatars'),
+           'location' => storage_path('app/public/avatars/'),
 
            'prefix' => '/storage/avatars/',
         ],
