@@ -17,6 +17,7 @@
         "overtrue/pinyin": "~4.0",
         "predis/predis": "~1.1",
         "spatie/laravel-permission": "~5.5",
+        "summerblue/administrator": "9.*",
         "summerblue/laravel-active": "9.*",
         "viacreative/sudo-su": "~1.1"
     },
@@ -69,7 +70,8 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "process-timeout": 900
     },
     "minimum-stability": "dev",
     "prefer-stable": true
