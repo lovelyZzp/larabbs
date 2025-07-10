@@ -24,7 +24,16 @@ return [
             'sortable' => false,
             'output'   => function ($value, $model) {
                 $avatar = $model->user->avatar;
-                $value = empty($avatar) ? 'N/A' : '<img src="'.$avatar.'" style="height:22px;width:22px"> ' . $model->user->name;
+
+                // 如果有头像，构建完整 URL
+                if (!empty($avatar)) {
+                    // 加上 storage 前缀，确保路径正确
+                    $avatarUrl = asset('storage/' . ltrim($avatar, '/'));
+                    $value = '<img src="' . $avatarUrl . '" style="height:22px;width:22px"> ' . e($model->user->name);
+                } else {
+                    $value = 'N/A';
+                }
+
                 return model_link($value, $model->user);
             },
         ],
