@@ -12,7 +12,7 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Support\Facades\Auth;
 
 use Spatie\Permission\Traits\HasRoles;
-
+use Illuminate\Support\Str;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -90,4 +90,29 @@ class User extends Authenticatable implements MustVerifyEmail
         {
             return $this->id == $model->user_id;
         }
+
+
+     public function setPasswordAttribute($value)
+        {
+            // 如果值的长度等于 60，即认为是已经做过加密的情况
+            if (strlen($value) != 60) {
+
+                // 不等于 60，做密码加密处理
+                $value = bcrypt($value);
+            }
+
+            $this->attributes['password'] = $value;
+        }
+
+    public function setAvatarAttribute($path)
+    {
+        if (!Str::startsWith($path, 'http')) {
+            $path = "avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
+    }
+
+
+
 }
